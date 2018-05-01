@@ -1,9 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs"  Inherits="Login" %>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<style>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   
+    <style>
 
 .button {
   padding: 15px 25px;
@@ -74,7 +76,7 @@ height: 30px;
     <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
   
 </head>
-<body>
+<body style="overflow: hidden;">
 	<ul class="cb-slideshow">
             <li><span>Image 01</span><div></div></li>
             <li><span>Image 02</span><div></div></li>
@@ -110,14 +112,14 @@ height: 30px;
                         <span class="focus-input100" ></span>
                     </div>
                     
-                    <br />  &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; <asp:RegularExpressionValidator ID="revUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Wrong E-Mail type!" Font-Size="Medium" ForeColor="Black" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="login" Font-Bold="True" Font-Italic="True" ></asp:RegularExpressionValidator>
+                    <br /> <center> <asp:RegularExpressionValidator ID="revUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Wrong E-Mail type!" Font-Size="Medium" ForeColor="Black" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="login" Font-Bold="True" Font-Italic="True" ></asp:RegularExpressionValidator></center>
 					<%--<br />	<center><asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Please enter your E-mail!" Font-Size="Medium" ForeColor="Black" ValidationGroup="login" Font-Bold="True" Font-Italic="True"></asp:RequiredFieldValidator></center>
                     <br />  <center><asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password!" Font-Size="Medium" ForeColor="Black" ValidationGroup="login" Font-Bold="True" Font-Italic="True" ></asp:RequiredFieldValidator ></center>--%>
 					
                     <div >
 
-                        &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;&emsp;<asp:Button ID="btnLogin" class="button" runat="server" Text="Login"  Font-Bold="True" OnClick="btnLogin_Click" ValidationGroup="login" style="text-align:center" />											
-					    <asp:Label ID="lblMessage" runat="server" Text="Label" Visible="False"></asp:Label>						                  	
+                       <center><asp:Button ID="btnLogin" class="button" runat="server" Text="Login"  Font-Bold="True" OnClick="btnLogin_Click" ValidationGroup="login" style="text-align:center" /></center>											
+					    <br /><center><asp:Label ID="lblMessage" runat="server" Text="Label" Visible="False"></asp:Label>		</center>				                  	
 					</div>
                     
 
