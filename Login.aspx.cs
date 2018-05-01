@@ -4,9 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Configuration;
+using MySql.Data.MySqlClient;
+using System.Data;
 public partial class Login : System.Web.UI.Page
 {
+    MySql.Data.MySqlClient.MySqlConnection conn;
+    MySql.Data.MySqlClient.MySqlCommand cmd;
+    MySql.Data.MySqlClient.MySqlCommand deneme;
+    MySql.Data.MySqlClient.MySqlConnection conndeneme;
+    //  MySql.Data.MySqlClient.MySqlDataReader rd;
+    String queryStr;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -18,55 +26,54 @@ public partial class Login : System.Web.UI.Page
             }
 
         }
-
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        AdroitOnlineTimeTableEntities db = new AdroitOnlineTimeTableEntities();
-        Teachers t;
-        Admins a;
-        LoginService ls = new LoginService();
         string email = txtUsername.Text.Trim();
         string password = txtPassword.Text;
 
-
-        t = ls.readDataTeacher(email, password);
-
-        a = ls.readDataAdmin(email, password);
-
         remember();
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["Adroit"].ToString();
+        conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
+        conn.Open();
+        cmd = conn.CreateCommand();
+        cmd.CommandType = CommandType.Text;
+        cmd.CommandText = "select * from Teachers where Email='" + txtUsername.Text + "' and Password='" + txtPassword.Text + "'";
+        cmd.ExecuteNonQuery();
 
-        if (t != null)
+
+        DataTable dt = new DataTable();
+        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+        da.Fill(dt);
+        foreach(DataRow dr in dt.Rows)
         {
-            Session["Teachers"] = t;
-            if (t.IsActive == false)
-            {
-                lblMessage.Visible = true;
-                lblMessage.Text = "Correct username and password, but not active!";
-            }
-            else
-            {
-                lblMessage.Visible = true;
-                Response.Redirect("TeacherHomepage.aspx");
-            }
-
+            Session["Email"] = dr["Email"].ToString();
+            Response.Redirect("TeacherHomepage.aspx");
+            
         }
+        conn.Close();
 
-        else if (a != null)
+        String connStringdeneme = System.Configuration.ConfigurationManager.ConnectionStrings["Adroit"].ToString();
+        conndeneme = new MySql.Data.MySqlClient.MySqlConnection(connStringdeneme);
+        conndeneme.Open();
+        deneme = conndeneme.CreateCommand();
+        deneme.CommandType = CommandType.Text;
+        deneme.CommandText = "select * from Admins where Email='" + txtUsername.Text + "' and Password='" + txtPassword.Text + "'";
+        deneme.ExecuteNonQuery();
+        DataTable dtdeneme = new DataTable();
+        MySqlDataAdapter dadeneme = new MySqlDataAdapter(deneme);
+        dadeneme.Fill(dtdeneme);
+        foreach (DataRow drdeneme in dtdeneme.Rows)
         {
-            Session["Admin"] = a;
-            lblMessage.Visible = true;
-            lblMessage.Text = "Welcome! " + a.Name + " " + a.Surname;
+            Session["Email"] = drdeneme["Email"].ToString();
             Response.Redirect("AdminHomepage.aspx");
-        }
-        else
-        {
 
-            lblMessage.Visible = true;
-            lblMessage.Text = "Wrong Username / Password !";
         }
 
+        conndeneme.Close();
+        
+        lblMessage.Text = "Wrong Username / Password !";
     }
 
     void remember()
