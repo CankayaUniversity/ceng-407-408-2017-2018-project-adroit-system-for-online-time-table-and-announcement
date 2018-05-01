@@ -165,7 +165,7 @@ public partial class Inbox : System.Web.UI.Page
         sc.Host = "smtp.gmail.com"; //smtp 
         sc.EnableSsl = true;
 
-        sc.Credentials = new NetworkCredential("nzlks95@gmail.com", "nk290795@");
+        sc.Credentials = new NetworkCredential("nzlks95@gmail.com", "sifre");
 
         MailMessage mail = new MailMessage();
 
