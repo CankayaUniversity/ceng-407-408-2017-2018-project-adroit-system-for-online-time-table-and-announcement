@@ -35,71 +35,7 @@ public partial class AddTeacher : System.Web.UI.Page
         
         if (!IsPostBack)
         {
-            int t = 1; //true value
-            ddlDevice.Items.Add("Select...");
-            ddlTeacher.Items.Add("Select...");
-            string constr = ConfigurationManager.ConnectionStrings["Adroit"].ConnectionString;
-            conn = new MySqlConnection(constr);
-            conn.Open();
-            cmd = new MySqlCommand("SELECT Devices_ID FROM Teacher_Devices where IsActive= '" + t + "'", conn);
-            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-            DataTable todevice = new DataTable();
-            sda.Fill(todevice);
-
-            cmdd = new MySqlCommand("SELECT DevicesID,DeviceCode FROM Devices where IsActive= '" + t + "'", conn);
-            MySqlDataAdapter sdad = new MySqlDataAdapter(cmdd);
-            DataTable d = new DataTable();
-            sdad.Fill(d);
-            foreach (DataRow drd in d.Rows)
-            {
-                int k = 0;
-                foreach (DataRow td in todevice.Rows)
-                {
-                    if (drd["DevicesID"].ToString() == td["Devices_ID"].ToString())
-                    {
-                        k++;
-                    }
-                }
-                if (k == 0)
-                {
-                    ddlDevice.Items.Add(Convert.ToString(drd["DevicesID"]) + "-" + Convert.ToString(drd["DeviceCode"]));
-                }
-            }
-           
-
-            conn.Close();
-            conn.Dispose();
-            conn = new MySqlConnection(constr);
-            conn.Open();
-            tcmd = new MySqlCommand("SELECT TeacherID,Name,Surname FROM Teachers where IsActive= '" + t + "'", conn);
-            MySqlDataAdapter tda = new MySqlDataAdapter(tcmd);
-            DataTable teach = new DataTable();
-            tda.Fill(teach);
-
-            ttcmd = new MySqlCommand("SELECT Teacher_ID FROM Teacher_Devices where IsActive= '" + t + "'", conn);
-            MySqlDataAdapter ttda = new MySqlDataAdapter(ttcmd);
-            DataTable toteacher = new DataTable();
-            ttda.Fill(toteacher);
-          
-
-            foreach (DataRow teac in teach.Rows)
-            {
-                int m = 0;
-                foreach (DataRow tt in toteacher.Rows)
-                {
-                    if (teac["TeacherID"].ToString() == tt["Teacher_ID"].ToString())
-                    {
-                        m++;
-                    }
-                }
-                if (m == 0)
-                {
-                    ddlTeacher.Items.Add(Convert.ToString(teac["Name"]) + " " + Convert.ToString(teac["Surname"]));
-                }
-            }
-
-            conn.Close();
-            conn.Dispose();
+            adding_ddl();
         }    
            
     }
@@ -156,7 +92,7 @@ public partial class AddTeacher : System.Web.UI.Page
           
           
             lblmessage.Text = "Matching process is successfully completed!";
-
+            adding_ddl();
             addLecturestoDatabase();
             conn.Close();
             conn.Dispose();
@@ -232,5 +168,74 @@ public partial class AddTeacher : System.Web.UI.Page
             conncontrol.Dispose();
         }
     }
+    void adding_ddl()
+    {
+        ddlDevice.Items.Clear();
+        ddlTeacher.Items.Clear();
+        int t = 1; //true value
+        ddlDevice.Items.Add("Select...");
+        ddlTeacher.Items.Add("Select...");
+        string constr = ConfigurationManager.ConnectionStrings["Adroit"].ConnectionString;
+        conn = new MySqlConnection(constr);
+        conn.Open();
+        cmd = new MySqlCommand("SELECT Devices_ID FROM Teacher_Devices where IsActive= '" + t + "'", conn);
+        MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+        DataTable todevice = new DataTable();
+        sda.Fill(todevice);
 
+        cmdd = new MySqlCommand("SELECT DevicesID,DeviceCode FROM Devices where IsActive= '" + t + "'", conn);
+        MySqlDataAdapter sdad = new MySqlDataAdapter(cmdd);
+        DataTable d = new DataTable();
+        sdad.Fill(d);
+        foreach (DataRow drd in d.Rows)
+        {
+            int k = 0;
+            foreach (DataRow td in todevice.Rows)
+            {
+                if (drd["DevicesID"].ToString() == td["Devices_ID"].ToString())
+                {
+                    k++;
+                }
+            }
+            if (k == 0)
+            {
+                ddlDevice.Items.Add(Convert.ToString(drd["DevicesID"]) + "-" + Convert.ToString(drd["DeviceCode"]));
+            }
+        }
+
+
+        conn.Close();
+        conn.Dispose();
+        conn = new MySqlConnection(constr);
+        conn.Open();
+        tcmd = new MySqlCommand("SELECT TeacherID,Name,Surname FROM Teachers where IsActive= '" + t + "'", conn);
+        MySqlDataAdapter tda = new MySqlDataAdapter(tcmd);
+        DataTable teach = new DataTable();
+        tda.Fill(teach);
+
+        ttcmd = new MySqlCommand("SELECT Teacher_ID FROM Teacher_Devices where IsActive= '" + t + "'", conn);
+        MySqlDataAdapter ttda = new MySqlDataAdapter(ttcmd);
+        DataTable toteacher = new DataTable();
+        ttda.Fill(toteacher);
+
+
+        foreach (DataRow teac in teach.Rows)
+        {
+            int m = 0;
+            foreach (DataRow tt in toteacher.Rows)
+            {
+                if (teac["TeacherID"].ToString() == tt["Teacher_ID"].ToString())
+                {
+                    m++;
+                }
+            }
+            if (m == 0)
+            {
+                ddlTeacher.Items.Add(Convert.ToString(teac["Name"]) + " " + Convert.ToString(teac["Surname"]));
+            }
+        }
+
+        conn.Close();
+        conn.Dispose();
+    }
 }
