@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 public class Time_Table_Tue extends Activity
 {
     Button Mon, Wed, Thu, Fri;
