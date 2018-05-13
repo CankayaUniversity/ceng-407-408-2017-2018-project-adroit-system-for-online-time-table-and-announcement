@@ -26,7 +26,6 @@ import android.widget.RelativeLayout.LayoutParams;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import android.content.res.Resources;
 
 
