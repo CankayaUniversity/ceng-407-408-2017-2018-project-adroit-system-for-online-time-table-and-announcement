@@ -6,9 +6,9 @@
 <head runat="server">
     <title>Teacher Homepage</title>
     <link rel="shortcut icon" href="images/icons/favicon_teacher.ico">
-    	<link rel="stylesheet" type="text/css" href="css/util.css">
-	    <link rel="stylesheet" type="text/css" href="css/main.css">
-        <link rel="stylesheet" type="text/css" href="css/3dbutton.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/3dbutton.css">
  
 <style>
 
@@ -27,7 +27,7 @@
     width:300px;
 }
 
-.button:hover {background-color: #ffbe0a}
+.button:hover {background-color: #818181}
 
 .button:active {
   background-color: #ffbe0a;
@@ -39,7 +39,7 @@
 </style>
   
 </head>
-<body style= "background: linear-gradient(to bottom right, #ffbe0a, #000000)">
+<body style= "background: linear-gradient(to bottom right, #ffbe0a, #000000); overflow: hidden;" >
     <div class="limiter">
 		<div class="container-login100" >
 			<div class="wrap-login100 p-t-30 p-b-50">
