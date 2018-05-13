@@ -85,8 +85,10 @@
            <asp:DropDownList ID="ddlDevice" runat="server" style=" width:200px; margin-left:2px;" ></asp:DropDownList>
            <br /><br />
            <asp:Button ID="btnAdd" runat="server" Text="Match"  BackColor="#262626" Font-Bold="True" Font-Size="Medium" ForeColor="White" OnClick="btnAdd_Click" />
-           &nbsp;&nbsp; <asp:Label ID="lblmessage" runat="server" Text="Label" Visible="False" Font-Bold="True" ForeColor="#FFCC00"></asp:Label>
+           &nbsp;&nbsp; <asp:Label ID="lblmessage" runat="server" Text="Label" Visible="False" Font-Bold="True" ForeColor="#FFCC00">
+                        </asp:Label>
        </div>
+      
 
    
     </form>
