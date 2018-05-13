@@ -5,7 +5,6 @@ from tkinter import font  as tkfont
 from tkinter import simpledialog
 from tkinter import messagebox
 import time
-#from time import sleep
 import RPi.GPIO as GPIO
 import os
 import picamera
