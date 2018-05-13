@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div runat="server" style=" margin-left:200px; margin-top:auto; "  >
+        <center>  <asp:Label ID="lblmes" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Italic="True" ForeColor="#242424" Font-Size="Large"></asp:Label></center>
         <asp:GridView ID="grdEmail" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" Height="100%" width="100%"  Style="overflow-y: scroll; overflow:auto; "  >
 
             <Columns>
@@ -59,7 +60,7 @@
        <div style="margin-left:1295px">
             <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" BackColor="#262626" Font-Bold="True" ForeColor="White"  />
             
-        </div>
+       </div>
  
     
 </asp:Content>
