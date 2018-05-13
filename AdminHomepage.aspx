@@ -19,7 +19,7 @@
   cursor: pointer;
   outline: none;
   color: #fff;
-  background-color: #ffbe0a;
+  background-color: #818181;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
@@ -39,7 +39,7 @@
 </style>
   
 </head>
-<body style= "background: linear-gradient(to bottom right, #ffbe0a, #000000)">
+<body style= "background: linear-gradient(to bottom right, #818181, #000000)">
     <div class="limiter">
 		<div class="container-login100" >
 			<div class="wrap-login100 p-t-30 p-b-50">
