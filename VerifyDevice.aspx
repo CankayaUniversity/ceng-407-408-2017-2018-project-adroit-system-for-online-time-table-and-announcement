@@ -86,10 +86,8 @@
            <asp:Button ID="btnAdd" runat="server" Text="Verify" OnClick="btnAdd_Click"  BackColor="#262626" Font-Bold="True" Font-Size="Medium" ForeColor="White" />
            &nbsp;&nbsp; <asp:Label ID="lblmessage" runat="server" Text="Label" Visible="False" Font-Bold="True" ForeColor="#FFCC00"></asp:Label>
        </div>
-
    
-    </form>
-    
+    </form>   
 
 </body>
 </html>
