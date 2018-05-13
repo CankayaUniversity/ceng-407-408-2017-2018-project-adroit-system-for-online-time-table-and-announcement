@@ -4,7 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <div runat="server" style=" margin-left:200px; margin-top:auto; "  >
-        <asp:GridView ID="grdAnnouncement" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#262626" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="#262626" Height="100%" width="100%"  Style="overflow-y: scroll; overflow:auto; " OnRowCancelingEdit="grdAnnouncement_RowCancelingEdit" OnRowEditing="grdAnnouncement_RowEditing" OnRowUpdating="grdAnnouncement_RowUpdating"  OnRowDeleting="grdAnnouncement_RowDeleting">
+         <center>  <asp:Label ID="lblmes" runat="server" Text="Label" Visible="False" Font-Bold="True" Font-Italic="True" ForeColor="#242424" Font-Size="Large"></asp:Label></center>
+         <asp:GridView ID="grdAnnouncement" runat="server" AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#262626" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="#262626" Height="100%" width="100%"  Style="overflow-y: scroll; overflow:auto; " OnRowCancelingEdit="grdAnnouncement_RowCancelingEdit" OnRowEditing="grdAnnouncement_RowEditing" OnRowUpdating="grdAnnouncement_RowUpdating"  OnRowDeleting="grdAnnouncement_RowDeleting">
             <Columns>
                 <asp:TemplateField HeaderText="Id" Visible="False">
                     <ItemTemplate>
