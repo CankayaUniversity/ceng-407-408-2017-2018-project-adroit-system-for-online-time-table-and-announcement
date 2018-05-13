@@ -13,8 +13,8 @@ from PIL import Image
 
 LARGE_FONT = ("Times New Roman", 20)
 
-cnx = mysql.connector.connect(user='efe', password='efe123',
-                              host='206.189.26.46', database='AdroitDatabase')
+cnx = mysql.connector.connect(user='***', password='******',
+                              host='***.***.**.**', database='AdroitDatabase')
 
 oldtime = time.time()
 
