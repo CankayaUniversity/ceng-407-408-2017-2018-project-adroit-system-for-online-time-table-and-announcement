@@ -94,13 +94,12 @@ height: 30px;
 				<form class="login100-form validate-form p-b-33 p-t-5"  runat="server">
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-                        <%--<input class="input100" type="text" name="username" placeholder="User name">--%>
-                        <asp:TextBox ID="txtUsername" CssClass="input100" placeholder="Email Address" autofocus="" runat="server"></asp:TextBox>
+                                             <asp:TextBox ID="txtUsername" CssClass="input100" placeholder="Email Address" autofocus="" runat="server"></asp:TextBox>
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <%--<input class="input100" type="password" name="pass" placeholder="Password">--%>
+                      
                          <asp:TextBox ID="txtPassword" CssClass="input100" placeholder="Password" runat="server" TextMode="Password" style="left: 0px; top: 0px" ></asp:TextBox> 
 						<span class="focus-input100" data-placeholder="&#xe80f;"> </span>
                     </div>
@@ -113,8 +112,6 @@ height: 30px;
                     </div>
                     
                     <br /> <center> <asp:RegularExpressionValidator ID="revUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Wrong E-Mail type!" Font-Size="Medium" ForeColor="Black" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="login" Font-Bold="True" Font-Italic="True" ></asp:RegularExpressionValidator></center>
-					<%--<br />	<center><asp:RequiredFieldValidator ID="rfvUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="Please enter your E-mail!" Font-Size="Medium" ForeColor="Black" ValidationGroup="login" Font-Bold="True" Font-Italic="True"></asp:RequiredFieldValidator></center>
-                    <br />  <center><asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password!" Font-Size="Medium" ForeColor="Black" ValidationGroup="login" Font-Bold="True" Font-Italic="True" ></asp:RequiredFieldValidator ></center>--%>
 					
                     <div >
 

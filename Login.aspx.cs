@@ -13,7 +13,6 @@ public partial class Login : System.Web.UI.Page
     MySql.Data.MySqlClient.MySqlCommand cmd;
     MySql.Data.MySqlClient.MySqlCommand deneme;
     MySql.Data.MySqlClient.MySqlConnection conndeneme;
-    //  MySql.Data.MySqlClient.MySqlDataReader rd;
     String queryStr;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -72,7 +71,8 @@ public partial class Login : System.Web.UI.Page
         }
 
         conndeneme.Close();
-        
+
+        lblMessage.Visible = true;
         lblMessage.Text = "Wrong Username / Password !";
     }
 
