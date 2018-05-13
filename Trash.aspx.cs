@@ -4,48 +4,65 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 public partial class Trash : System.Web.UI.Page
 {
+    MySql.Data.MySqlClient.MySqlConnection conn;
+    MySql.Data.MySqlClient.MySqlCommand cmd;
+    MySql.Data.MySqlClient.MySqlDataReader rd;
+    String queryStr;
+    String Dt;
+    int id; //teacher id
+    int f = 0; //false value
     protected void Page_Load(object sender, EventArgs e)
     {
-        AdroitOnlineTimeTableEntities db = new AdroitOnlineTimeTableEntities();
-        Teachers teacher = (Teachers)Session["Teachers"];
-       // ServiceReferenceDersler.Service1Soap DERSLER = new ServiceReferenceDersler.Service1SoapClient();
+        btnDelete.Visible = false;
+        string constr = ConfigurationManager.ConnectionStrings["Adroit"].ConnectionString;
+        conn = new MySqlConnection(constr);
+        conn.Open();
+        cmd = new MySqlCommand("SELECT *  FROM Teachers where Email= '" + Session["Email"].ToString() + "' ", conn);
+        rd = cmd.ExecuteReader();
 
-    
-        Teachers t = (from x in db.Teachers
-                      where x.TeacherID == teacher.TeacherID
-                      select x).SingleOrDefault();
+        if (rd.Read())
+        {
+
+            id = Convert.ToInt32(rd.GetString("TeacherID"));
+            rd.Close();
+        }
+        conn.Close();
+
         if (!IsPostBack)
         {
-            var query = (from x in db.Messages
-                     where x.TeacherID == teacher.TeacherID && x.IsActive == false
-
-                     select new
-                     {
-                         x.SenderName,
-                         x.MessageContent,
-                         x.TimeSent,
-                         x.ReceiverName,
-                         x.MessageID
-
-                     }).ToList();
-
-        grdEmail.Columns[1].Visible = true;
-        grdEmail.Columns[2].Visible = true;
-        grdEmail.Columns[4].Visible = false;
-        grdEmail.DataSource = query;
-        grdEmail.DataBind();
+            conn.Open();
+            cmd = new MySqlCommand("SELECT SenderName,MessageContent,TimeSent,MessageID,ReceiverName FROM Messages where IsActive= '" + f + "' and TeacherID= '" + id + "' ORDER BY TimeSent DESC", conn);
+            MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                btnDelete.Visible = true;
+                
             }
+            else
+            {
+                lblmes.Visible = true;
+                lblmes.Text = "There is no Email!";
+            }
+            grdEmail.DataSource = dt;
+            grdEmail.DataBind();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            cmd.Dispose();
+        
+         }
 
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        AdroitOnlineTimeTableEntities db = new AdroitOnlineTimeTableEntities();
-        Teachers teacher = (Teachers)Session["Teachers"];
-
         for (int i = 0; i < grdEmail.Rows.Count; i++)
         {
             GridViewRow row = (GridViewRow)grdEmail.Rows[i];
@@ -55,18 +72,21 @@ public partial class Trash : System.Web.UI.Page
 
             if (cbRequest != null && cbRequest.Checked)
             {
-                Messages m1 = (from x in db.Messages
-                               where x.MessageID == id1 && x.IsActive == false
-                               select x).SingleOrDefault();
-                if (m1 != null)
-                {
-                    db.Messages.Remove(m1);
-                    db.SaveChanges();
-                }
-
+                int fals = 0;
+                int tru = 1;
+                string constr = ConfigurationManager.ConnectionStrings["Adroit"].ConnectionString;
+                conn = new MySqlConnection(constr);
+                conn.Open();
+                cmd = new MySqlCommand("Delete from Messages WHERE MessageID=@a2 and IsActive=@a3", conn);
+                cmd.Parameters.Add("a2", id1);
+                cmd.Parameters.Add("a3", fals);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                cmd.Dispose();
             }
 
         }
         Response.Redirect(Request.RawUrl);
+      
     }
 }
