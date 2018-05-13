@@ -13,6 +13,7 @@
         <asp:TextBox ID="txtExp" runat="server" TextMode="DateTimeLocal" Height="18px" Width="187px"></asp:TextBox>
         <br /> <br />
         <asp:Button ID="btnPublish" runat="server" Text="Publish" BackColor="#262626" Font-Bold="True" Font-Size="Medium" ForeColor="White" OnClick="btnPublish_Click"/>
+         <asp:Label ID="lblmessage" runat="server" Font-Bold="True" ForeColor="#262626" Text="Label" Visible="false"></asp:Label>
     </div>
 </asp:Content>
 
