@@ -21,7 +21,7 @@ In this guide we describe how to install and compile the Adroit System for Onlin
 * Microsoft .NET Framework version 4.7.02556 or above should be installed.
 * Android Studio version 3.1.2 or above should be installed to compile and run our mobile application, older versions of Android Studio can cause undesired warnings or errors.
 * For compiling our Python code use Idle for compilation. Make sure that the Python version is 3.5.2 otherwise, there can be some errors in compilation stage.
-  * Our Python code uses some extra libraries. The list you should download your device;
+* Our Python code uses some extra libraries. The list you should download your device;
   * Mysql connector for Python
   * Pi camera for Python
   * Image for Python
