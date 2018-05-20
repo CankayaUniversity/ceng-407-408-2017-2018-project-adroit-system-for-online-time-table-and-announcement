@@ -12,18 +12,16 @@
 	Advisor: Abdül Kadir GÖRÜR agorur@cankaya.edu.tr
   
 # **Installation and Compilation Guide**
-
 In this guide we describe how to install and compile the Adroit System for Online Time Table and Announcement project.
 
 ## **Prerequisites**
-
 * Visual Studio 2015 or above should be installed to compile and run our website.
 * Microsoft .NET Framework version 4.7.02556 or above should be installed.
 * Android Studio version 3.1.2 or above should be installed to compile and run our mobile
 application, older versions of Android Studio can cause undesired warnings or errors.
 *For compiling our Python code use Idle for compilation. Make sure that the Python version
 is 3.5.2 otherwise, there can be some errors in compilation stage.
-* Our Python code uses some extra libraries. The list you should download your device;
+* Our Python code uses some extra libraries. The list you should install your device;
 	* Mysql connector for Python
 	* Pi camera for Python
 	* Image for Python
@@ -33,20 +31,17 @@ is 3.5.2 otherwise, there can be some errors in compilation stage.
 **Important:** Make note that Python code will only work in Raspberry Pi 3. You can never use the Python code from other devices, otherwise you will get some compilation errors, that they are insoluble.
 
 ## **Compiling and Running**
-
 ### **Compiling and Running for Website**
-
 * Copy the source files to master folder of projects of Visual Studio.
 * Open Visual Studio → Open the project folders → Open website project file(Default name;
 AdroitTimetableMysql) → Select ‘AdroitTimetableMysql.sln’ → Compile the Website
 project.
    There are two way to running the Website;
 * Running the project on Visual Studio
-* Running the project on our Host from [here](https://www.cankayaweb.com). (This state is not required to compiling the
+* Running the project on our Host from [here](http://www.cankayaweb.com/). (This state is not required to compiling the
 project)
 
 ### **Compiling and Running for Mobile Application**
-
 * Copy the source files to master folder of projects of Android Studio.
 * Open Android Studio → Open the project folders → Open mobile application file(Default
 name; MobileAppCankaya) → Select the folder → Compile the Mobile Application
@@ -81,4 +76,5 @@ There is no specific system requirements to compile or run our project.
 Download our project from [here](https://github.com/CankayaUniversity/ceng-407-408-project-adroit-system-for-online-time-table-and-announcement/releases).
 
 **Note:** If there is any compilation or run time error, please contact with us.
+
 ## **Please refer to [User Manual](https://github.com/CankayaUniversity/ceng-407-408-project-adroit-system-for-online-time-table-and-announcement/wiki/User-Manual) before using the application to proper use.**
