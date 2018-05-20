@@ -28,7 +28,7 @@ is 3.5.2 otherwise, there can be some errors in compilation stage.
 	* Pi camera for Python
 	* Image for Python
  
-All of these libraries are required, if they are not installed then you get some compilation errors. 
+	All of these libraries are required, if they are not installed then you get some compilation errors. 
   
 **Important:** Make note that Python code will only work in Raspberry Pi 3. You can never use the Python code from other devices, otherwise you will get some compilation errors, that they are insoluble.
 
